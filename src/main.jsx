@@ -8,7 +8,7 @@ import Login from "./pages/login";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
 import About from "./pages/about";
-import Footer from "./components/Footer";
+import Footer from "./components/footer";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
