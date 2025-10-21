@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { ShoppingCart } from "lucide-react";
 
 function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +39,16 @@ function Navigation() {
                 className="hover:text-blue-400 transition-colors"
               >
                 Contact
+              </Link>
+              <Link
+                to="/cart"
+                className="hover:text-blue-400 transition-colors relative"
+              >
+                <ShoppingCart size={22} />
+                {/* Optional: Badge for cart count */}
+                <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5">
+                  3
+                </span>
               </Link>
               <Link
                 to="/login"
@@ -82,7 +93,7 @@ function Navigation() {
               to="/"
               className="block px-3 py-2 rounded-md hover:bg-gray-700 transition-colors"
             >
-              Home
+              Product
             </Link>
             <Link
               to="/about"
@@ -98,9 +109,19 @@ function Navigation() {
             </Link>
             <Link
               to="/contact"
-              className="block px-3 py-2 rounded-md hover:bg-gray-700 transition-colors"
+              className="block px-3 py-2 rounded-md hover:bg-gray-700 translate-x-1 transition-colors"
             >
               Contact
+            </Link>
+            <Link
+              to="/cart"
+              className="hover:text-blue-400 translate-x-1 transition-colors relative"
+            >
+              <ShoppingCart size={22} />
+              {/* Optional: Badge for cart count */}
+              <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs rounded-full px-1.5">
+                3
+              </span>
             </Link>
             <Link
               to="/login"

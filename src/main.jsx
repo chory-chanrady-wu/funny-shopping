@@ -8,6 +8,7 @@ import Login from "./pages/login";
 import Services from "./pages/services";
 import Contact from "./pages/contact";
 import About from "./pages/about";
+import Cart from "./pages/cart";
 import Footer from "./components/footer";
 
 createRoot(document.getElementById("root")).render(
@@ -20,6 +21,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/services" element={<Services />} />
+        <Route path="/cart" element={<Cart />} />
       </Routes>
     </BrowserRouter>
     <Footer />

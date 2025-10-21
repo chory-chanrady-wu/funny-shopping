@@ -114,7 +114,7 @@ const sampleProducts = [
 
 function Products() {
   return (
-    <div className="min-h-screen bg-gray-50 mt-10 py-12 px-1 lg:px-8">
+    <div className="scroll-smooth min-h-screen bg-gray-50 mt-10 py-12 px-1 lg:px-8">
       <h1 className="text-4xl font-bold text-center text-blue-900 mb-6">
         Featured Products
       </h1>
@@ -124,7 +124,7 @@ function Products() {
 
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
         {sampleProducts.map((product) => (
-          <Card key={product.id} className="bg-white shadow-md">
+          <Card key={product.id} className="bg-white shadow-green-400">
             <CardHeader className="text-center">
               <CardTitle>{product.name}</CardTitle>
             </CardHeader>
@@ -136,16 +136,22 @@ function Products() {
               />
               <CardDescription>{product.description}</CardDescription>
               <p className="mt-2 font-bold text-lg">${product.price}</p>
-              <p className="mt-2 font-bold text-lg">
-                After Dis{product.discount}%: $
-                {(
-                  product.price -
-                  (product.price * product.discount) / 100
-                ).toFixed(2)}
+              <p className="mt-2  text-lg">
+                After Dis{product.discount}%:{" "}
+                <span className="font-bold">
+                  $
+                  {(
+                    product.price -
+                    (product.price * product.discount) / 100
+                  ).toFixed(2)}
+                </span>
               </p>
             </CardContent>
-            <CardFooter>
-              <Button className="w-full bg-amber-400 hover:bg-green-500">
+            <CardFooter className="justify-center gap-5">
+              <Button className="w-auto  bg-amber-400 hover:bg-green-500 hover:translate-y-0.5 transition-transform">
+                Add To Cart
+              </Button>
+              <Button className="w-auto bg-blue-400 hover:bg-green-500 hover:translate-y-0.5 transition-transform">
                 Buy Now
               </Button>
             </CardFooter>
