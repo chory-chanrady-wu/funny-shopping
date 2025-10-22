@@ -23,12 +23,6 @@ function Navigation() {
                 Products
               </Link>
               <Link
-                to="/about"
-                className="hover:text-blue-400 transition-colors"
-              >
-                About
-              </Link>
-              <Link
                 to="/services"
                 className="hover:text-blue-400 transition-colors"
               >
@@ -40,6 +34,13 @@ function Navigation() {
               >
                 Contact
               </Link>
+              <Link
+                to="/about"
+                className="hover:text-blue-400 transition-colors"
+              >
+                About
+              </Link>
+
               <Link
                 to="/cart"
                 className="hover:text-blue-400 transition-colors relative"
