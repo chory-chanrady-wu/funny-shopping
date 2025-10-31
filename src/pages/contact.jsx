@@ -2,10 +2,6 @@
 
 import React, { useRef, useState } from "react";
 import emailjs from "emailjs-com";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 import { Mail, MapPin, Phone, Send } from "lucide-react";
 
 function Contact() {
@@ -37,172 +33,151 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 md:py-32 px-4 sm:px-6 lg:px-8">
-      <div className="container mx-auto max-w-6xl">
-        <div className="space-y-16">
-          {/* Title */}
-          <div className="space-y-2 text-center md:text-left">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground flex items-center justify-center md:justify-start gap-4">
-              <span>Get In Touch</span>
-              <div className="h-px bg-border flex-1 max-w-xs hidden md:block" />
-            </h2>
-            <p className="text-muted-foreground text-lg max-w-2xl leading-relaxed text-pretty mx-auto md:mx-0">
-              Please rach out to support center if you have any inquiry.
-            </p>
+    <div className="bg-gray-100 min-h-screen pt-24">
+      <div className="max-w-6xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-blue-900 mb-4">
+            Get In Touch
+          </h1>
+          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
+            Have a question or feedback? Please reach out to our support center.
+            We'd love to hear from you!
+          </p>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-10">
+          {/* Form */}
+          <div className="bg-white rounded-lg shadow-md p-8">
+            <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              Send a Message
+            </h3>
+            <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  placeholder="Your name"
+                  required
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  placeholder="your.email@example.com"
+                  required
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+
+              <div>
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-gray-700"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  placeholder="Your message..."
+                  rows={4}
+                  required
+                  className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className="w-full flex justify-center items-center gap-2 py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 disabled:bg-blue-400"
+              >
+                {loading ? "Sending..." : "Send Message"}
+                {!loading && <Send className="h-4 w-4" />}
+              </button>
+            </form>
           </div>
 
-          {/* Contact Form and Info */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto md:mx-0">
-            {/* Form */}
-            <Card className="p-8 space-y-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-2xl font-bold text-foreground">
-                Send a Message
-              </h3>
-              <form ref={formRef} onSubmit={handleSubmit} className="space-y-5">
-                <div className="space-y-2">
-                  <label
-                    htmlFor="name"
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Name
-                  </label>
-                  <Input
-                    id="name"
-                    name="name"
-                    placeholder="Your name"
-                    required
-                    className="h-11"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="email"
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Email
-                  </label>
-                  <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    required
-                    className="h-11"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label
-                    htmlFor="message"
-                    className="text-sm font-medium text-foreground"
-                  >
-                    Message
-                  </label>
-                  <Textarea
-                    id="message"
-                    name="message"
-                    placeholder="Your message..."
-                    rows={4}
-                    required
-                  />
-                </div>
-
-                <Button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full group text-white bg-gray-800"
-                  size="lg"
+          {/* Contact Info */}
+          <div className="space-y-6">
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-start gap-4">
+              <div className="p-3 bg-yellow-100 rounded-lg">
+                <Mail className="h-6 w-6 text-yellow-600" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-1">Email</h4>
+                <a
+                  href="mailto:chorychanrady.wu@gmail.com"
+                  className="text-gray-600 hover:text-blue-600 transition-colors break-all"
                 >
-                  {loading ? "Sending..." : "Send Message"}
-                  {!loading && (
-                    <Send className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                  )}
-                </Button>
-              </form>
-            </Card>
+                  chorychanrady.wu@gmail.com
+                </a>
+              </div>
+            </div>
 
-            {/* Contact Info Cards */}
-            <div className="space-y-4">
-              <Card className="p-6 hover:border-green-500 hover:shadow-md transition-all group">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <Mail className="h-6 w-6 text-yellow-500" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
-                      Email
-                    </h4>
-                    <a
-                      href="mailto:chorychanrady.wu@gmail.com"
-                      className="text-muted-foreground hover:text-primary transition-colors break-all"
-                    >
-                      chorychanrady.wu@gmail.com
-                    </a>
-                  </div>
-                </div>
-              </Card>
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-start gap-4">
+              <div className="p-3 bg-green-100 rounded-lg">
+                <Phone className="h-6 w-6 text-green-600" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-1">Phone</h4>
+                <a
+                  href="tel:+85510346085"
+                  className="text-gray-600 hover:text-blue-600 transition-colors"
+                >
+                  +855 10 346 085
+                </a>
+              </div>
+            </div>
 
-              <Card className="p-6 hover:border-green-500 hover:shadow-md transition-all group">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <Phone className="h-6 w-6 text-green-500" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
-                      Phone
-                    </h4>
-                    <a
-                      href="tel:+85510346085"
-                      className="text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      +855 10 346 085
-                    </a>
-                  </div>
-                </div>
-              </Card>
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-start gap-4">
+              <div className="p-3 bg-blue-100 rounded-lg">
+                <Send className="h-6 w-6 text-blue-600" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-1">Telegram</h4>
+                <a
+                  href="https://t.me/chorychanrady"
+                  className="text-gray-600 hover:text-blue-600 transition-colors break-all"
+                >
+                  @chorychanrady
+                </a>
+              </div>
+            </div>
 
-              <Card className="p-6 hover:border-green-500 hover:shadow-md transition-all group">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <Send className="h-6 w-6 text-blue-500" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
-                      Telegram
-                    </h4>
-                    <a
-                      href="https://t.me/chorychanrady"
-                      className="text-muted-foreground hover:text-primary transition-colors break-all"
-                    >
-                      @chorychanrady
-                    </a>
-                  </div>
-                </div>
-              </Card>
-
-              <Card className="p-6 hover:border-green-500 hover:shadow-md transition-all group">
-                <div className="flex items-start gap-4">
-                  <div className="p-3 bg-primary/10 rounded-lg group-hover:bg-primary/20 transition-colors">
-                    <MapPin className="h-6 w-6 text-red-500" />
-                  </div>
-                  <div className="flex-1">
-                    <h4 className="font-semibold text-foreground mb-1">
-                      Location
-                    </h4>
-                    <p className="text-muted-foreground">
-                      271, Sangkat Ou Baek K'am, Khan Saen Sok
-                      <br />
-                      Phnom Penh, Cambodia
-                    </p>
-                  </div>
-                </div>
-              </Card>
+            <div className="bg-white rounded-lg shadow-md p-6 flex items-start gap-4">
+              <div className="p-3 bg-red-100 rounded-lg">
+                <MapPin className="h-6 w-6 text-red-600" />
+              </div>
+              <div>
+                <h4 className="font-semibold text-gray-800 mb-1">Location</h4>
+                <p className="text-gray-600">
+                  271, Sangkat Ou Baek K'am, Khan Saen Sok
+                  <br />
+                  Phnom Penh, Cambodia
+                </p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
