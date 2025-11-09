@@ -24,7 +24,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <AuthProvider>
         <CartProvider>
-          <Toaster position="bottom-center" />
+          <Toaster position="top-center" />
           <Navigation />
           <ScrollToTop />
           <Routes>
